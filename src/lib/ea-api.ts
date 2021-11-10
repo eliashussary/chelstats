@@ -1,7 +1,11 @@
+import qs from "querystring";
+
 const API_BASE = "/api/nhl";
 
 export const URLs = {
   ClubSearch: API_BASE + "/clubs/search",
+  ClubInfo: API_BASE + "/clubs/info",
+  ClubStats: API_BASE + "/clubs/stats",
   MembersStats: API_BASE + "/members/stats",
 } as const;
 
@@ -12,27 +16,53 @@ export const PlatformOptions = {
   XB1: { name: "Xbox One", value: 'xboxone"' },
 } as const;
 
+interface BaseQuery {
+  platform: string;
+}
+
+export interface ClubIdQuery extends BaseQuery {
+  clubId: string;
+}
+
+export interface ClubNameQuery extends BaseQuery {
+  clubName: string;
+}
+
 export type Platform =
   typeof PlatformOptions[keyof typeof PlatformOptions]["value"];
 
 // https://proclubs.ea.com/api/nhl/members/stats?platform=ps4&clubId=123
-export const getMembersStatsUrl = (platform: Platform, clubId: string) => {
-  return `${URLs.MembersStats}?platform=${platform}&clubId=${encodeURI(
-    clubId
-  )}`;
+export const getMembersStatsUrl = (query: ClubIdQuery) => {
+  return `${URLs.MembersStats}?${qs.stringify(query)}`;
+};
+
+export const fetchMembersStats = (query: ClubIdQuery) => {
+  return fetch(getMembersStatsUrl(query)).then((res) => res.json());
 };
 
 // https://proclubs.ea.com/api/nhl/clubs/search?platform=ps4&clubName=mysearch
-export const getClubSearchUrl = (platform: Platform, clubName: string) => {
-  return `${URLs.ClubSearch}?platform=${platform}&clubName=${encodeURI(
-    clubName
-  )}`;
+export const getClubSearchUrl = (query: ClubNameQuery) => {
+  return `${URLs.ClubSearch}?${qs.stringify(query)}`;
 };
 
-export const fetchMembersStats = (platform: Platform, clubId: string) => {
-  return fetch(getMembersStatsUrl(platform, clubId)).then((res) => res.json());
+export const fetchClubSearch = ({ platform, clubName }: ClubNameQuery) => {
+  return fetch(getClubSearchUrl({ platform, clubName })).then((res) =>
+    res.json()
+  );
 };
 
-export const fetchClubSearch = (platform: Platform, clubName: string) => {
-  return fetch(getClubSearchUrl(platform, clubName)).then((res) => res.json());
+export const getClubInfo = (query: ClubIdQuery) => {
+  return `${URLs.ClubInfo}?${qs.stringify(query)}`;
+};
+
+export const fetchClubInfo = (query: ClubIdQuery) => {
+  return fetch(getClubInfo(query)).then((res) => res.json());
+};
+
+export const getClubStats = (query: ClubIdQuery) => {
+  return `${URLs.ClubStats}?${qs.stringify(query)}`;
+};
+
+export const fetchClubStats = (query: ClubIdQuery) => {
+  return fetch(getClubStats(query)).then((res) => res.json());
 };

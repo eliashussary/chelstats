@@ -17,7 +17,7 @@ import { ClubSearchProvider } from "./ClubSearchProvider";
 export const ClubSearchInput = () => {
   const {
     isLoading,
-    clubname,
+    clubName,
     platform,
     handleOnClubnameChange,
     handleOnPlatformChange,
@@ -45,7 +45,7 @@ export const ClubSearchInput = () => {
               onChange={(e) => {
                 handleOnClubnameChange(e.target.value);
               }}
-              value={clubname}
+              value={clubName}
               size="lg"
             />
             <Button

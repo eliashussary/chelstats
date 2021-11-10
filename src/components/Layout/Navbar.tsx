@@ -45,9 +45,9 @@ export const Navbar = () => {
           <Flex align={"center"} mr={5}>
             <Link as={NextLink} href="/">
               <>
-                <Image src="logo.png" size="xs" maxW={75} />
+                <Image src="/logo.png" size="xs" maxW={50} />
                 <Heading
-                  as="p"
+                  as="i"
                   size="lg"
                   letterSpacing={"tighter"}
                   textStyle={"italic"}

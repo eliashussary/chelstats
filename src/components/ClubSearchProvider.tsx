@@ -7,8 +7,9 @@ const noop = (...args: any) => {};
 
 interface ClubSearchContext {
   data: any;
+  isFetched: boolean;
   isLoading: boolean;
-  clubname: string;
+  clubName: string;
   platform: Platform;
   handleOnClubnameChange: (val: string) => void;
   handleOnPlatformChange: (val: string) => void;
@@ -17,8 +18,9 @@ interface ClubSearchContext {
 
 const Context = createContext<ClubSearchContext>({
   data: {},
+  isFetched: false,
   isLoading: false,
-  clubname: "",
+  clubName: "",
   platform: PlatformOptions.PS5.value,
   handleOnClubnameChange: noop,
   handleOnPlatformChange: noop,
@@ -27,17 +29,17 @@ const Context = createContext<ClubSearchContext>({
 
 export const ClubSearchProvider = ({ children }) => {
   const [platform, setPlatform] = useState<Platform>(PlatformOptions.PS5.value);
-  const [clubname, setClubname] = useState("");
+  const [clubName, setclubName] = useState("");
 
-  const { refetch, isFetching, data } = useQuery(
-    ["club", platform, clubname],
-    () => fetchClubSearch(platform, clubname),
+  const { refetch, isFetching, isFetched, data } = useQuery(
+    ["club", platform, clubName],
+    () => fetchClubSearch({ platform, clubName }),
     {
       enabled: false,
     }
   );
 
-  const handleOnClubnameChange = (val: string) => setClubname(val);
+  const handleOnClubnameChange = (val: string) => setclubName(val);
 
   const handleOnPlatformChange = (val: Platform) => setPlatform(val);
 
@@ -51,7 +53,8 @@ export const ClubSearchProvider = ({ children }) => {
       value={{
         data,
         isLoading: isFetching,
-        clubname,
+        isFetched,
+        clubName,
         platform,
         handleOnClubnameChange,
         handleOnPlatformChange,
