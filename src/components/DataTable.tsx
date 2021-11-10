@@ -2,11 +2,13 @@ import { useMemo } from "react";
 import { Table, Thead, Tbody, Tr, Th, Td, chakra, Box } from "@chakra-ui/react";
 import { useTable, useSortBy, Column } from "react-table";
 import { isNumeric } from "../lib/util";
-import { ClubSearchProvider } from "./ClubSearchProvider";
 
 interface DataTableProps {
   data: any;
-  columns?: Column[];
+  columns?: (Column & {
+    isNumeric?: boolean;
+    isObect?: boolean;
+  })[];
 }
 
 export const DataTable = (props: DataTableProps) => {
@@ -22,7 +24,7 @@ export const DataTable = (props: DataTableProps) => {
       return {
         Header: key,
         accessor: key,
-        isNumeric: isNumeric(value),
+        isNumeric: isNumeric(value as string),
         isObject: typeof value === "object",
       };
     });
@@ -39,6 +41,7 @@ export const DataTable = (props: DataTableProps) => {
             {headerGroups.map((headerGroup) => (
               <Tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
+                  // @ts-ignore
                   <Th {...column.getHeaderProps()} isNumeric={column.isNumeric}>
                     {column.render("Header")}
                     <chakra.span pl="4"></chakra.span>
@@ -53,11 +56,13 @@ export const DataTable = (props: DataTableProps) => {
               return (
                 <Tr {...row.getRowProps()}>
                   {row.cells.map((cell) => {
+                    // @ts-ignore
                     if (cell.column.isObject) return null;
 
                     return (
                       <Td
                         {...cell.getCellProps()}
+                        // @ts-ignore
                         isNumeric={cell.column.isNumeric}
                       >
                         {cell.render("Cell")}

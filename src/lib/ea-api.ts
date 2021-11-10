@@ -1,6 +1,7 @@
-import qs from "querystring";
-
 const API_BASE = "/api/nhl";
+
+const qsStringify = (query: Record<string, string>) =>
+  new URLSearchParams(query).toString();
 
 export const URLs = {
   ClubSearch: API_BASE + "/clubs/search",
@@ -16,7 +17,7 @@ export const PlatformOptions = {
   XB1: { name: "Xbox One", value: 'xboxone"' },
 } as const;
 
-interface BaseQuery {
+interface BaseQuery extends Record<string, string> {
   platform: string;
 }
 
@@ -33,7 +34,7 @@ export type Platform =
 
 // https://proclubs.ea.com/api/nhl/members/stats?platform=ps4&clubId=123
 export const getMembersStatsUrl = (query: ClubIdQuery) => {
-  return `${URLs.MembersStats}?${qs.stringify(query)}`;
+  return `${URLs.MembersStats}?${qsStringify(query)}`;
 };
 
 export const fetchMembersStats = (query: ClubIdQuery) => {
@@ -42,7 +43,7 @@ export const fetchMembersStats = (query: ClubIdQuery) => {
 
 // https://proclubs.ea.com/api/nhl/clubs/search?platform=ps4&clubName=mysearch
 export const getClubSearchUrl = (query: ClubNameQuery) => {
-  return `${URLs.ClubSearch}?${qs.stringify(query)}`;
+  return `${URLs.ClubSearch}?${qsStringify(query)}`;
 };
 
 export const fetchClubSearch = ({ platform, clubName }: ClubNameQuery) => {
@@ -52,7 +53,7 @@ export const fetchClubSearch = ({ platform, clubName }: ClubNameQuery) => {
 };
 
 export const getClubInfo = (query: ClubIdQuery) => {
-  return `${URLs.ClubInfo}?${qs.stringify(query)}`;
+  return `${URLs.ClubInfo}?${qsStringify(query)}`;
 };
 
 export const fetchClubInfo = (query: ClubIdQuery) => {
@@ -60,7 +61,7 @@ export const fetchClubInfo = (query: ClubIdQuery) => {
 };
 
 export const getClubStats = (query: ClubIdQuery) => {
-  return `${URLs.ClubStats}?${qs.stringify(query)}`;
+  return `${URLs.ClubStats}?${qsStringify(query)}`;
 };
 
 export const fetchClubStats = (query: ClubIdQuery) => {
