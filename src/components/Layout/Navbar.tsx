@@ -9,8 +9,11 @@ import {
   Stack,
   Image,
   Spacer,
+  HStack,
+  Text,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { VscGithub } from "react-icons/vsc";
 
 import NextLink from "next/link";
 import React from "react";
@@ -77,6 +80,16 @@ export const Navbar = () => {
 
           <Spacer />
           <Flex>
+            <Link
+              href="https://github.com/eliashussary/chelstats"
+              isExternal
+              mr={5}
+            >
+              <HStack>
+                <Text>Github</Text>
+                <VscGithub style={{ display: "inline-flex", marginLeft: 3 }} />
+              </HStack>
+            </Link>
             <DarkModeSwitch />
           </Flex>
         </Flex>
