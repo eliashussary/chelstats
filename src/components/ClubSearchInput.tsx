@@ -55,6 +55,7 @@ export const ClubSearchInput = () => {
               onClick={handleOnSubmit}
               type="submit"
               isLoading={isLoading}
+              disabled={!clubName || !platform}
             >
               Search
             </Button>

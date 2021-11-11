@@ -9,7 +9,6 @@ const breakpoints = createBreakpoints({
 });
 
 const solidBlackOverride = ({ colorMode, colorScheme }) => {
-  console.log(colorScheme, colorMode);
   if (colorScheme === "black" && colorMode === "light") {
     return {
       bg: "black",

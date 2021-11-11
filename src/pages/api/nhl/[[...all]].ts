@@ -17,6 +17,14 @@ export default async function handler(
   if (req.method !== "GET" || !isValidUrl)
     return res.status(403).send("forbidden");
 
-  const data = await fetch(EA_BASE_URL + req.url).then((res) => res.json());
+  const eaUrl = EA_BASE_URL + req.url;
+
+  const data = await fetch(eaUrl, {
+    method: "GET",
+    headers: {
+      "user-agent": "chelstats.xyz",
+      "accept-language": "en-US,en;q=0.9",
+    },
+  }).then((res) => res.json());
   res.status(200).json(data);
 }

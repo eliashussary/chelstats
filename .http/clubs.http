@@ -1,0 +1,15 @@
+GET https://proclubs.ea.com/api/nhl/clubs/search?platform=ps4&clubName=bar+down+ur+sister
+# accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+# accept-encoding: gzip, deflate, br
+accept-language: en-US,en;q=0.9
+# cache-control: max-age=0
+# cookie: notice_preferences=100; _abck=877231ED0B2E004A0EBCCAA9D8B80E60~-1~YAAQDWDcF//kquB6AQAAhanM4gafNQ0drllRcxVkM3iv1PGbeL2sjh08wejcH/NmEzW1z61LrTKdMr4Z4Zj3pz9E5by7lYdr82sRumH2GavooOrEcOwDgDVcSW78/ojP0/F3qgFachoyUFlWKzT3jNa8oEs5Gfcv49+2or76TnYqvsL8IdZZ2KIjtkNN8L99FAImfoYDzGatWwIAcn9KfLr4JQJUlVGfTJxzgD1+Qai0cwmrl3M8B6Eod0b3KLRDeflkA84MKsAElCojcpa36hi1eXuHrfWU2kVO4PLkdt5cwSSm7IhqoM0oRibxdJr4L1qE/yTc0S/JtMKtsV9In9AZRZn8MarkNCelp/zU6Gkt9QTDveQz1w==~-1~-1~-1; ealocale=en-us; ak_bmsc=A9188A97522F68990689F40D2C2EE7CC~000000000000000000000000000000~YAAQBys0FySNRAx9AQAA0IuREA359kmV9zgx1pZ9U9abbwyyxczH/7GcaAzheACL2TVA/ow0AJiMHiV1FAVx+sU8Ms942nQic5xtsBH4rdnMDxoFblPkck1cXBnMc7EMwjdd6hROfZ32a8qgMZ2hjOajtFQzyhrWchdbNdY8dYendywSd5rMBuNQ+RNSilMCEfaSwuSVNuSamYPSlQoy/jxc8n1mHuIOk9Mv0iRb1e4Rk79E91xIlici3sHzW+4qmRF/MYECXuqjmL/GzH3CxW2c9TU4EhYwbrSZoIU45i+Aoda0yf05dVVOhcdHjqjhpme5hqXdSN9mdRJQ5jFFyTxHgEoGSGT0tQttaaSV1EPX0ARSAs19EEy08IRxHhYxcisGRg==
+# sec-ch-ua: "Google Chrome";v="95", "Chromium";v="95", ";Not A Brand";v="99"
+# sec-ch-ua-mobile: ?0
+# sec-ch-ua-platform: "macOS"
+# sec-fetch-dest: document
+# sec-fetch-mode: navigate
+# sec-fetch-site: none
+# sec-fetch-user: ?1
+# upgrade-insecure-requests: 1
+# user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
