@@ -22,7 +22,9 @@ export default async function handler(
   const data = await fetch(eaUrl, {
     method: "GET",
     headers: {
-      "user-agent": "chelstats.xyz",
+      "user-agent": req.headers["user-agent"],
+      accept: "application/json",
+      "accept-encoding": "gzip, deflate, br",
       "accept-language": "en-US,en;q=0.9",
     },
   }).then((res) => res.json());
